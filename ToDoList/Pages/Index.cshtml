@@ -4,25 +4,26 @@
     ViewData["Title"] = "Min att göra lista";
 }
 
-<div class="text-center">
-    <p>To-Do List for @Model.UserName</p>
-    <h1 class="display-4">My To-Do's:</h1>
+<div class="text-left">
+    @*<p>To-Do List for @Model.UserName</p>*@
+    <h1 class="display-4">MY TASKS</h1>
 
     @if (Model.Tasks.Any())
     {
-        <table>
+        <table class="paddingtop">
             <thead>
-                <tr>
-                    <th>To-Do</th>
-                    <th>Done</th>
+                <tr> 
+                    <th class="paddingtop" style="color:dodgerblue">TO-DO</th>
+                    <th class="paddingtop" style="color:dodgerblue">DONE</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody class="paddingbottom">
                 @foreach (var item in Model.Tasks)
                 {
                     <tr>
                         <td>@item.Description</td>
                         <td><a asp-page-handler="Remove" asp-route-id="@item.ID">Done</a></td>
+                       
                     </tr>
                 }
             </tbody>
@@ -32,15 +33,15 @@
     {
         <p>There are no tasks on the list.</p>
     }
-    <h4>Add a task to the list</h4>
+    <h4 class="paddingtop" style="color:dodgerblue">ADD A TASK</h4>
     <form method="post">
-        <input asp-for="NewTask.UserId" type="hidden" value="@Model.UserId" />
+        <input placeholder="Title" asp-for="NewTask.UserId" type="hidden" value="@Model.UserId"  />
         <div class="form-group">
             <input asp-for="NewTask.Description" />
         </div>
 
         <div class="form-group">
-            <input type="submit" value="Add" />
+            <input type="submit" value="Add" style="color:dodgerblue" />
         </div>
     </form>
 </div>

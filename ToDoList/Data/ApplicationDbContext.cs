@@ -14,5 +14,10 @@ namespace ToDoList.Data
         {
         }
         public DbSet<Task> Tasks { get; set; }
+
+        internal System.Threading.Tasks.Task FindAsync(Task newTask)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
