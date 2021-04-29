@@ -56,6 +56,8 @@ namespace ToDoList.Pages
         }
         public async Task<IActionResult> OnPostAsync()
         {
+            if (NewTask.Description == null) return RedirectToPage("./Index");
+            
             if (!ModelState.IsValid) return Page();
             await _ctx.Tasks.AddAsync(NewTask);
             await _ctx.SaveChangesAsync();
